@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/maven,gradle,eclipse,intellij+all,visualstudiocode,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=maven,gradle,eclipse,intellij+all,visualstudiocode,macos
 
+### Embeded Tomcat ###
+tomcat*/
+
 ### Eclipse ###
 .metadata
 bin/
@@ -252,3 +255,4 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,gradle,eclipse,intellij+all,visualstudiocode,macos
+
