@@ -7,7 +7,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloApi {
     
     @GetMapping("/")
-    public String hello() {
-        return "Hello, Spring!";
+    public HelloMessage hello() {
+        return new HelloMessage("Hello, World!");
+    }
+
+    public static class HelloMessage {
+        private String msg;
+
+        public HelloMessage(String msg) {
+            this.msg = msg;
+        }
+
+        public String getMsg() {
+            return msg;
+        }
+
+        public void setMsg(String msg) {
+            this.msg = msg;
+        }
     }
 }
