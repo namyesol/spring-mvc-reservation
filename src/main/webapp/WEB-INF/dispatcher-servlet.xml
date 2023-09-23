@@ -18,4 +18,8 @@
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:default-servlet-handler />
     
+    <bean id="swagger2Config" class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration"/>
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />
+
 </beans>
