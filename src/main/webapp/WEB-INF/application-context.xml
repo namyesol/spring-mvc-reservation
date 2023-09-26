@@ -12,13 +12,13 @@
                         http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd
                         http://mybatis.org/schema/mybatis-spring https://mybatis.org/schema/mybatis-spring.xsd">
 
-    <context:component-scan base-package="kr.or.connect.service" />
+    <context:component-scan base-package="kr.or.connect.reservation.service" />
 
 	<!-- Configurer that replaces ${...} placeholders with values from a properties file -->
     <context:property-placeholder location="classpath:application.properties" system-properties-mode="OVERRIDE"/>
 	
 	<!-- Enables scanning for @Transactional annotations -->
-    <tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 	
 	<!-- DataSource Configuration for the connection pool-->
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
@@ -28,6 +28,8 @@
         <property name="password" value="${jdbc.password}" />
     </bean>
     
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
 	<!-- JDBC Profile -->
     <beans profile="jdbc">
         <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
