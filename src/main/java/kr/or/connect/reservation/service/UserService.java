@@ -1,8 +1,6 @@
 package kr.or.connect.reservation.service;
 
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +10,7 @@ import kr.or.connect.reservation.domain.user.User;
 import kr.or.connect.reservation.repository.UserRepository;
 
 @Service
-public class UserService implements UserDetailsService {
+public class UserService {
     
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -36,15 +34,6 @@ public class UserService implements UserDetailsService {
     @Transactional(readOnly = true)
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
-    }
-
-    @Override
-    public User loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = this.findUserByEmail(email);
-        if (user == null) {
-            throw new UsernameNotFoundException(email);
-        }
-        return user;
     }
     
 }
