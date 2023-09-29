@@ -25,7 +25,12 @@
         <mvc:bean-name/>
     </mvc:view-resolvers>
 
-    <mvc:annotation-driven validator="validator"/>
+    <mvc:annotation-driven validator="validator">
+        <mvc:argument-resolvers>
+            <bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver"></bean>
+        </mvc:argument-resolvers>
+    </mvc:annotation-driven>
+        
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
