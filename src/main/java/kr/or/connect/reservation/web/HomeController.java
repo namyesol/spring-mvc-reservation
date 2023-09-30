@@ -22,6 +22,7 @@ public class HomeController {
     @GetMapping("/protected") 
     public String protectedResource(@CurrentUser User user, Model model) {
         log.debug("user={}", user);
-        return "protected";
+        model.addAttribute("user", user);
+        return "resources/protected";
     }
 }
